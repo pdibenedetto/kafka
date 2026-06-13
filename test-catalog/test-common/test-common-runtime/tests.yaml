@@ -1,5 +1,8 @@
+org.apache.kafka.common.test.AdminUtilsTest:
+- testFetchOrWaitForLeader
+- testFetchOrWaitForLeaderTimesOut
 org.apache.kafka.common.test.KafkaClusterTestKitTest:
-- testCreateClusterAndCloseWithMultipleLogDirs
+- testCreateClusterFormatAndCloseWithMultipleLogDirs
 - testCreateClusterWithBadNumDisksThrows
 - testCreateClusterWithBadNumOfBrokers
 - testCreateClusterWithBadNumOfControllers
@@ -31,6 +34,7 @@ org.apache.kafka.common.test.junit.ClusterTestExtensionsTest:
 - testNotSupportedNewGroupProtocols
 - testSaslPlaintext
 - testSaslPlaintextWithController
+- testSaslSslWithController
 - testShutdownAndSyncMetadata
 - testSupportedNewGroupProtocols
 - testVerifyTopicDeletion
