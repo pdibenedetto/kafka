@@ -1714,6 +1714,10 @@ org.apache.kafka.streams.processor.UsePartitionTimeOnInvalidTimestampTest:
 - usePartitionTimeOnInvalidTimestamp
 org.apache.kafka.streams.processor.WallclockTimestampExtractorTest:
 - extractSystemTimestamp
+org.apache.kafka.streams.processor.api.ReadOnlyRecordTest:
+- readOnlyAccessorsShouldTolerateNullKeyAndValue
+- readOnlyHeadersShouldBeNonNullAndEmptyWhenConstructedWithoutHeaders
+- recordShouldBeAssignableToReadOnlyRecordAndExposeSameAccessors
 org.apache.kafka.streams.processor.internals.AbstractProcessorContextTest:
 - appConfigsShouldReturnParsedValues
 - appConfigsShouldReturnUnrecognizedValues
