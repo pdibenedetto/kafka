@@ -6662,6 +6662,7 @@ org.apache.kafka.streams.state.internals.StagedMergeIteratorTest:
 - shouldSkipBaseKeyWhenStagingHasTombstoneForSameKey
 - shouldSkipTombstones
 - shouldSupportPeekNextKey
+- shouldThrowInvalidStateStoreExceptionOnHasNextAfterClose
 - shouldThrowOnNextWhenExhausted
 org.apache.kafka.streams.state.internals.StoreQueryUtilsTest:
 - shouldPassIsolationLevelToReadOnlyForKeyQuery
