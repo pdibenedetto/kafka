@@ -454,6 +454,12 @@ org.apache.kafka.clients.admin.KafkaAdminClientTest:
 - testUnregisterBrokerTimeoutAndSuccessRetry
 - testUnregisterBrokerTimeoutMaxRetry
 - testUnregisterBrokerTimeoutMaxWait
+- testUnregisterControllerFailure
+- testUnregisterControllerSuccess
+- testUnregisterControllerTimeoutAndFailureRetry
+- testUnregisterControllerTimeoutAndSuccessRetry
+- testUnregisterControllerTimeoutMaxRetry
+- testUnregisterControllerTimeoutMaxWait
 - testUpdateFeaturesDuringSuccess
 - testUpdateFeaturesHandleNotControllerException
 - testUpdateFeaturesShouldFailRequestForEmptyUpdates
@@ -2608,6 +2614,7 @@ org.apache.kafka.clients.consumer.internals.StreamsGroupHeartbeatRequestManagerT
 - testNotSendingHeartbeatIfMemberIsJoiningOrAcknowledgingWhenHeartbeatInFlight
 - testNotSendingLeaveHeartbeatIfPollTimerExpiredAndMemberIsLeaving
 - testOtherErrorResponse
+- testPartitionsByUserEndpointMergedForDuplicateUserEndpoints
 - testPollOnCloseWhenIsLeaving
 - testPollOnCloseWhenIsNotLeaving
 - testPollOnCloseWhenStaticMemberIsLeaving
@@ -4811,6 +4818,7 @@ org.apache.kafka.common.requests.RequestResponseTest:
 - testStreamsGroupDescribeRequestV0RejectsIncludeTopologyDescription
 - testStreamsGroupDescribeResponseV0RejectsTopologyDescriptionFields
 - testUnregisterBrokerResponseWithUnknownServerError
+- testUnregisterControllerResponseWithUnknownServerError
 - testValidApiVersionsRequest
 - testValidTaggedFieldsWithSaslAuthenticateRequest
 - verifyFetchResponseFullWrites
