@@ -1818,6 +1818,10 @@ org.apache.kafka.streams.processor.internals.DefaultStateUpdaterTest:
 - shouldCompleteWithNullIfTaskNotFound
 - shouldDrainFailedTasksAndExceptions
 - shouldDrainRestoredActiveTasks
+- shouldFailPendingRemovalsWhenStateUpdaterThreadDies
+- shouldFailRemovalOfTaskAfterStateUpdaterWasShutDown
+- shouldFailRemovalOfTaskWhenStateUpdaterThreadDiesWhilePerformingIt
+- shouldFailRemovalOfTaskWhenStateUpdaterThreadIsNotRunningAnymore
 - shouldGetTasksFromExceptionsAndFailedTasks
 - shouldGetTasksFromPausedTasks
 - shouldGetTasksFromRestoredActiveTasks
@@ -1835,6 +1839,7 @@ org.apache.kafka.streams.processor.internals.DefaultStateUpdaterTest:
 - shouldNotPauseActiveStatefulTaskInRestoredActiveTasks
 - shouldNotPauseStandbyTaskInFailedTasks
 - shouldNotPausingNonExistTasks
+- shouldNotReportFatalExceptionWhenStateUpdaterWasShutDown
 - shouldNotResumeActiveStatefulTaskInFailedTasks
 - shouldNotResumeActiveStatefulTaskInRestoredActiveTasks
 - shouldNotResumeNonExistingTasks
@@ -1858,8 +1863,10 @@ org.apache.kafka.streams.processor.internals.DefaultStateUpdaterTest:
 - shouldRemoveStatelessTaskFromRestoredActiveTasks
 - shouldRemoveUpdatingActiveStatefulTask
 - shouldRemoveUpdatingStandbyTask
+- shouldReportFatalExceptionWhenStateUpdaterThreadDied
 - shouldReportMaxValueInEndOffsetSnapshotOnOverflow
 - shouldReportMaxValueInEndOffsetSnapshotWhenAnyPartitionIsUnknown
+- shouldReportTaskAsFailedWhenStateUpdaterThreadIsNotRunningAnymore
 - shouldRestoreActiveStatefulTaskThenUpdateStandbyTaskAndAgainRestoreActiveStatefulTask
 - shouldRestoreActiveStatefulTasksAndUpdateStandbyTasks
 - shouldRestoreMultipleActiveStatefulTasks
@@ -1875,7 +1882,6 @@ org.apache.kafka.streams.processor.internals.DefaultStateUpdaterTest:
 - shouldReturnTrueForRestoreActiveTasksIfTaskRestored
 - shouldReturnTrueForRestoreActiveTasksIfTaskUpdating
 - shouldShutdownStateUpdater
-- shouldShutdownStateUpdaterAndRestart
 - shouldShutdownStateUpdaterWithPausedTasks
 - shouldTasks
 - shouldTasksFromInputQueue
@@ -1891,6 +1897,7 @@ org.apache.kafka.streams.processor.internals.DefaultStateUpdaterTest:
 - shouldThrowIfRestartedWithNonEmptyFailedTasks
 - shouldThrowIfRestartedWithNonEmptyRestoredTasks
 - shouldThrowIfStandbyTaskNotInStateRunning
+- shouldThrowIfStartedAfterShutdown
 - shouldThrowIfStatefulTaskNotInStateRestoring
 - shouldThrowIfStatelessTaskNotInStateRestoring
 - shouldUpdateMultipleStandbyTasks
@@ -3212,7 +3219,7 @@ org.apache.kafka.streams.processor.internals.TaskManagerTest:
 - shouldClosePendingTasksToInitDuringShutdown
 - shouldCloseStandbyTasksOnShutdown
 - shouldCloseStandbyUnassignedTasksWhenCreatingNewTasks
-- shouldCloseTasksIfStateUpdaterTimesOutOnRemove
+- shouldCloseTasksIfStateUpdaterFailsRemoval
 - shouldCloseTasksWhenRemoveFailedActiveTasksFromStateUpdaterOnPartitionLost
 - shouldCollectFailedTaskFromStateUpdaterAndRethrow
 - shouldCommitActiveAndStandbyTasks
@@ -3238,6 +3245,7 @@ org.apache.kafka.streams.processor.internals.TaskManagerTest:
 - shouldCreateStandbyTaskDuringAssignment
 - shouldCreateStandbyTaskFromStartupStateStore
 - shouldFailOnCommitFatal
+- shouldFailStreamThreadIfStateUpdaterDied
 - shouldFirstHandleTasksInStateUpdaterThenSuspendedActiveTasksInTaskRegistry
 - shouldHandleExceptionThrownDuringRecyclingActiveTask
 - shouldHandleExceptionThrownDuringRecyclingStandbyTask
@@ -3248,6 +3256,7 @@ org.apache.kafka.streams.processor.internals.TaskManagerTest:
 - shouldInitializeNewStandbyTasks
 - shouldKeepReassignedActiveTaskInStateUpdater
 - shouldKeepReassignedStandbyTaskInStateUpdater
+- shouldKeepWaitingForRemovalIfStateUpdaterDoesNotCompleteItWithinLogInterval
 - shouldListNotPausedTasks
 - shouldLockActiveOnHandleAssignmentWithProcessingThreads
 - shouldLockAffectedTasksOnHandleRevocation
@@ -4899,6 +4908,7 @@ org.apache.kafka.streams.state.internals.InMemorySessionStoreTest:
 - shouldFindValuesWithinMergingSessionWindowRange
 - shouldMatchPositionAfterPut
 - shouldMeasureExpiredRecords
+- shouldMeasureExpiredRecordsDroppedDuringRestoreAsRecords
 - shouldNotExpireFromOpenIterator
 - shouldNotFetchExpiredSessions
 - shouldNotThrowExceptionRemovingNonexistentKey
@@ -5065,6 +5075,7 @@ org.apache.kafka.streams.state.internals.InMemoryWindowStoreTest:
 - shouldGetBackwardAll
 - shouldMatchPositionAfterPut
 - shouldMeasureExpiredRecords
+- shouldMeasureExpiredRecordsDroppedDuringRestoreAsRecords
 - shouldNotExpireFromOpenIterator
 - shouldNotThrowConcurrentModificationException
 - shouldNotThrowExceptionWhenFetchRangeIsExpired

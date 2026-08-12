@@ -432,7 +432,7 @@ org.apache.kafka.streams.integration.StateDirectoryIntegrationTest:
 - testCleanUpStateDirIfEmpty
 - testNotCleanUpStateDirIfNotEmpty
 org.apache.kafka.streams.integration.StateUpdaterFailureIntegrationTest:
-- correctlyHandleFlushErrorsDuringRebalance
+- correctlyHandleFailuresDuringRebalance
 org.apache.kafka.streams.integration.StoreQueryIntegrationTest:
 - shouldFailWithIllegalArgumentExceptionWhenIQPartitionerReturnsMultiplePartitions
 - shouldQueryAllStalePartitionStores
