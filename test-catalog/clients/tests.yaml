@@ -4531,6 +4531,7 @@ org.apache.kafka.common.record.internal.FileLogInputStreamTest:
 org.apache.kafka.common.record.internal.FileRecordsTest:
 - testAppendProtectsFromOverflow
 - testBytesLengthOfWriteTo
+- testCloseFlushesAfterTrim
 - testConversion
 - testFileSize
 - testIterationDoesntChangePosition
